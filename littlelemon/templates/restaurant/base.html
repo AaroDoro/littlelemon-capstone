@@ -1,0 +1,31 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Little Lemon{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'restaurant/styles.css' %}">
+  {% block scripts %}{% endblock %}
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="{% url 'home' %}">
+      <span class="lemon-mark" aria-hidden="true">🍋</span>
+      <span>LITTLE LEMON</span>
+    </a>
+    <nav class="navigation" aria-label="Main navigation">
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'home' %}#about">About</a>
+      <a href="{% url 'home' %}#menu">Menu</a>
+      <a href="{% url 'book' %}">Book</a>
+      <a href="{% url 'reservations' %}">Reservations</a>
+    </nav>
+  </header>
+  <main class="main-content">{% block content %}{% endblock %}</main>
+  <footer class="site-footer">
+    <span class="footer-mark">🍋</span>
+    <span>Copyright Little Lemon</span>
+  </footer>
+</body>
+</html>

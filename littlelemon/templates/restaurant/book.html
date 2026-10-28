@@ -1,0 +1,39 @@
+{% extends "restaurant/base.html" %}
+{% load static %}
+{% block title %}Book a table | Little Lemon{% endblock %}
+{% block scripts %}<script src="{% static 'restaurant/booking.js' %}" defer></script>{% endblock %}
+{% block content %}
+<section class="booking-layout">
+  <div class="form-panel">
+    <h1>Make a reservation</h1>
+    {% if messages %}{% for message in messages %}<p class="notice">{{ message }}</p>{% endfor %}{% endif %}
+    <form method="post" id="booking-form" novalidate>
+      {% csrf_token %}
+      {% if form.non_field_errors %}<div class="errors">{{ form.non_field_errors }}</div>{% endif %}
+      <div class="field">
+        <label for="{{ form.first_name.id_for_label }}">Name:</label>
+        {{ form.first_name }}
+        {% for error in form.first_name.errors %}<small class="error">{{ error }}</small>{% endfor %}
+      </div>
+      <div class="field">
+        <label for="reservation_date">Reservation date:</label>
+        {{ form.reservation_date }}
+        {% for error in form.reservation_date.errors %}<small class="error">{{ error }}</small>{% endfor %}
+      </div>
+      <div class="field">
+        <label for="reservation_slot">Reservation time:</label>
+        {{ form.reservation_slot }}
+        {% for error in form.reservation_slot.errors %}<small class="error">{{ error }}</small>{% endfor %}
+        <small id="slot-message" class="help" aria-live="polite"></small>
+      </div>
+      <button class="button button-full" type="submit">Reserve</button>
+    </form>
+  </div>
+  <aside class="bookings-panel">
+    <h2>Bookings for <span id="selected-date">{{ form.reservation_date.value|date:'Y-m-d' }}</span></h2>
+    <p id="loading-message" class="help">Loading bookings…</p>
+    <ul id="booking-list" class="booking-list"></ul>
+    <p id="no-bookings" class="help" hidden>No Booking for this date.</p>
+  </aside>
+</section>
+{% endblock %}

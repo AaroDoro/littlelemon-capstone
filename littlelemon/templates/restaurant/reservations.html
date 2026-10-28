@@ -1,0 +1,15 @@
+{% extends "restaurant/base.html" %}
+{% load static %}
+{% block title %}All Reservations | Little Lemon{% endblock %}
+{% block scripts %}<script src="{% static 'restaurant/reservations.js' %}" defer></script>{% endblock %}
+{% block content %}
+<section class="reservations-page">
+  <h1>All Reservations</h1>
+  <p class="help">Reservation data is retrieved from the bookings API.</p>
+  <pre id="reservations-json" class="json-output" aria-live="polite">Loading reservations…</pre>
+  <div class="map-placeholder">
+    <span class="map-pin">●</span>
+    <div><strong>Little Lemon</strong><br><small>Find us in your neighbourhood</small></div>
+  </div>
+</section>
+{% endblock %}

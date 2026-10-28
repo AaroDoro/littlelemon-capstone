@@ -1,0 +1,22 @@
+{% extends "restaurant/base.html" %}
+{% block title %}Little Lemon | Home{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">FRESH · SEASONAL · MEDITERRANEAN</p>
+    <h1>A little taste of sunshine.</h1>
+    <p>Welcome to Little Lemon, a neighbourhood restaurant serving fresh ingredients and bright Mediterranean flavours.</p>
+    <a class="button" href="{% url 'book' %}">Make a reservation</a>
+  </div>
+  <div class="hero-art" aria-label="Lemon illustration">🍋</div>
+</section>
+<section id="about" class="info-card">
+  <h2>About Little Lemon</h2>
+  <p>Good food, warm company, and seasonal ingredients. We look forward to welcoming you.</p>
+</section>
+<section id="menu" class="info-card">
+  <h2>Today's favourites</h2>
+  <p>Ask our team about today's seasonal dishes when you visit.</p>
+  <a href="{% url 'book' %}">Reserve a table →</a>
+</section>
+{% endblock %}
